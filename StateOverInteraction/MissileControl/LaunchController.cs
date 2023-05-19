@@ -13,10 +13,9 @@ class LaunchController
 
     public void SearchForThreats()
     {
-        (int, int)? threat;
-        while ((threat = _scanner.Scan()) != null)
+        while (_scanner.Scan() is { } threat)
         {
-            _missileLauncher.LaunchMissiles(threat.Value);
+            _missileLauncher.LaunchMissiles(threat.Location);
         }
     }
 }

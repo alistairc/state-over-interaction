@@ -31,7 +31,7 @@ public class FiringMissilesStateWithMoq
     {
         var threatLocation = (1, 11);
         _scanner.SetupSequence(s => s.Scan())
-            .Returns(threatLocation);
+            .Returns(new Threat(threatLocation));
 
         _controller.SearchForThreats();
 
@@ -46,9 +46,9 @@ public class FiringMissilesStateWithMoq
         var threat3Location = (3, 33);
 
         _scanner.SetupSequence(s => s.Scan())
-            .Returns(threat1Location)
-            .Returns(threat2Location)
-            .Returns(threat3Location);
+            .Returns(new Threat(threat1Location))
+            .Returns(new Threat(threat2Location))
+            .Returns(new Threat(threat3Location));
 
         _controller.SearchForThreats();
 

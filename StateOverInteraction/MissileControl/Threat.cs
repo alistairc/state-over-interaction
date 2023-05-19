@@ -1,6 +1,3 @@
 ﻿namespace StateOverInteraction.MissileControl;
 
-public interface IScanner
-{
-    Threat? Scan();
-}
+public record Threat((int,int) Location);

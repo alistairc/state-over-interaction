@@ -6,10 +6,10 @@ class FakeScanner : IScanner
 {
     readonly ConcurrentQueue<(int, int)> _threats = new();
 
-    public (int, int)? Scan()
+    public Threat? Scan()
     {
         var found = _threats.TryDequeue(out var result);
-        return found ? result : null;
+        return found ? new Threat(result) : null;
     }
 
     public FakeScanner AddThreat((int, int) threatLocation)
